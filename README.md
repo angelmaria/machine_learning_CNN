@@ -51,23 +51,29 @@ Esta aplicación está diseñada para la predicción de riesgo de ictus y la cla
 ## Funcionalidades Principales
 
 ### 1. Predicción de Ictus
-<div style="float: right; margin-left: 15px;">
-  <img width="250" alt="image" src="https://github.com/user-attachments/assets/7bf25396-564e-4f8b-be81-925926ef55fb">
-</div>
-La aplicación permite predecir el riesgo de ictus en pacientes basándose en 10 variables clave ingresadas a través de un formulario. Estas variables incluyen:
 
-- **age**: Edad del paciente
-- **avg_glucose_level**: Nivel promedio de glucosa
-- **bmi**: Índice de masa corporal
-- **hypertension**: Presencia de hipertensión
-- **heart_disease**: Historial de enfermedad cardíaca
-- **gender**: Género del paciente
-- **ever_married**: Estado civil
-- **work_type**: Tipo de trabajo
-- **Residence_type**: Tipo de residencia
-- **smoking_status**: Estado de tabaquismo
+<table>
+  <tr>
+    <td>
+      La aplicación permite predecir el riesgo de ictus en pacientes basándose en 10 variables clave ingresadas a través de un formulario. Estas variables incluyen:
+      - **age**: Edad del paciente
+      - **avg_glucose_level**: Nivel promedio de glucosa
+      - **bmi**: Índice de masa corporal
+      - **hypertension**: Presencia de hipertensión
+      - **heart_disease**: Historial de enfermedad cardíaca
+      - **gender**: Género del paciente
+      - **ever_married**: Estado civil
+      - **work_type**: Tipo de trabajo
+      - **Residence_type**: Tipo de residencia
+      - **smoking_status**: Estado de tabaquismo
 
-Al hacer clic en el botón de "Predict", se muestra un modal con el resultado de riesgo de ictus (alto o bajo), junto con la probabilidad estimada y algunas recomendaciones según el resultado obtenido.
+      Al hacer clic en el botón de "Predict", se muestra un modal con el resultado de riesgo de ictus (alto o bajo), junto con la probabilidad estimada y algunas recomendaciones según el resultado obtenido.
+    </td>
+    <td>
+      <img width="250" alt="image" src="https://github.com/user-attachments/assets/7bf25396-564e-4f8b-be81-925926ef55fb">
+    </td>
+  </tr>
+</table>
 
 ### 2. Clasificación de Imágenes
 Utilizando las librerías **TensorFlow** y **Keras**, la aplicación permite la clasificación de imágenes de tomografías computarizadas (TC). Está entrenada en un conjunto de datos de 2500 imágenes, distribuidas en:
