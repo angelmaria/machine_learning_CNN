@@ -69,6 +69,7 @@ La aplicación permite predecir el riesgo de ictus en pacientes basándose en 10
 Al hacer clic en el botón de "Predict", se muestra un modal con el resultado de riesgo de ictus (alto o bajo), junto con la probabilidad estimada y algunas recomendaciones según el resultado obtenido.
 
 ### 2. Clasificación de Imágenes
+<hr>
 <img align="right" width="250" alt="image" src="https://github.com/user-attachments/assets/6269ff6f-7fce-4859-b3c2-e2d0aa5812de">
 
 Utilizando las librerías **TensorFlow** y **Keras**, la aplicación permite la clasificación de imágenes de tomografías computarizadas (TC). Está entrenada en un conjunto de datos de 2500 imágenes, distribuidas en:
