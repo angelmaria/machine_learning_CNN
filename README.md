@@ -51,7 +51,11 @@ Esta aplicación está diseñada para la predicción de riesgo de ictus y la cla
 ## Funcionalidades Principales
 
 ### 1. Predicción de Ictus
+<div style="float: right; margin-left: 15px;">
+  <img width="250" alt="image" src="https://github.com/user-attachments/assets/7bf25396-564e-4f8b-be81-925926ef55fb">
+</div>
 La aplicación permite predecir el riesgo de ictus en pacientes basándose en 10 variables clave ingresadas a través de un formulario. Estas variables incluyen:
+
 - **age**: Edad del paciente
 - **avg_glucose_level**: Nivel promedio de glucosa
 - **bmi**: Índice de masa corporal
