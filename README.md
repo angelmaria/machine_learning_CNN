@@ -1,9 +1,7 @@
 ![image](https://github.com/user-attachments/assets/ed6d1dc5-602d-46f7-ac90-c90ae1fc04cd)
 
-# Modelo de Machine Learning
-Predicción y Clasificación de Imágenes usando modelo de regresión logística para la predicción de datos de salud y una red neuronal convolucional (CNN) para la clasificación de imágenes médicas.
+# Stroke Risk Predictor & CT Image Classifier
 
-# Estructura de carpetas:
 # Estructura de Carpetas del Proyecto
 
 ```plaintext
@@ -43,7 +41,7 @@ stroke_prediction_project/
 ├── README.md
 └── requirements.txt
 
-```markdown
+
 # Stroke Prediction and Image Classification App
 
 ## Descripción General
