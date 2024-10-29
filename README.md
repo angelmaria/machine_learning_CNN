@@ -80,13 +80,13 @@ El modelo de CNN ha alcanzado un **95% de precisión** en el conjunto de imágen
 
 ### 3. Carga Masiva
 <hr>
-<img align="right" style="box-shadow:2px 4px solid grey;" width="250" alt="image" src="https://github.com/user-attachments/assets/f0302849-35c8-430d-8526-02dcb7ebe3f6">
+<img align="right" width="150" alt="image" src="https://github.com/user-attachments/assets/f0302849-35c8-430d-8526-02dcb7ebe3f6">
 
 La aplicación permite la carga masiva de datos, lo cual facilita el procesamiento de múltiples registros a la vez, optimizando el tiempo de carga y análisis para los usuarios.
 
 ### 4. Informes
 <hr>
-<img align="right" width="496" alt="image" src="https://github.com/user-attachments/assets/f0d5faa4-7f72-441a-a9df-709cb93cdf2f">
+<img align="right" width="300" alt="image" src="https://github.com/user-attachments/assets/f0d5faa4-7f72-441a-a9df-709cb93cdf2f">
 
 Incluye una sección de informes en la que se muestran las métricas del modelo de **regresión logística** utilizado para la predicción de ictus. En esta sección se presentan diferentes gráficos y métricas del modelo, como la matriz de confusión, precisión y sensibilidad. Este enlace de informes está protegido por **control de acceso basado en roles** (RBAC), implementado con Django, de modo que solo usuarios autorizados pueden acceder a información relevante para su rol profesional.
 
