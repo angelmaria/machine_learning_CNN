@@ -1,6 +1,6 @@
 ![image](https://github.com/user-attachments/assets/ed6d1dc5-602d-46f7-ac90-c90ae1fc04cd)
 
-# Stroke Risk Predictor & CT Image Classifier
+# Web App en Django para predecir riesgo de ictus & Clasificador de Imágenes TC
 
 # Estructura de Carpetas del Proyecto
 
