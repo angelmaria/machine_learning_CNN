@@ -43,6 +43,7 @@ stroke_prediction_project/
 ```
 
 # Stroke Prediction and Image Classification App
+Aplicación integral para predecir el riesgo de ictus y clasificar imágenes de tomografías computarizadas (CT) mediante algoritmos de regresión logística y redes neuronales convolucionales (CNN). Diseñada para facilitar el análisis médico, ofrece predicciones personalizadas y clasificación de imágenes con alta precisión, además de informes detallados y acceso controlado para profesionales de la salud.
 
 ## Descripción General
 Esta aplicación está diseñada para la predicción de riesgo de ictus y la clasificación de imágenes médicas. Utiliza algoritmos de machine learning avanzados, incluyendo regresión logística y redes neuronales convolucionales (CNN), proporcionando un entorno integral para profesionales de la salud que desean realizar predicciones rápidas y clasificar imágenes médicas con precisión.
