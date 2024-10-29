@@ -40,7 +40,7 @@ stroke_prediction_project/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-
+```
 
 # Stroke Prediction and Image Classification App
 
