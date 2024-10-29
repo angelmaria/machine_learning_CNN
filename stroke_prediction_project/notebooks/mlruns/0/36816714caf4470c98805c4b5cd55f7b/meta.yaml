@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/36816714caf4470c98805c4b5cd55f7b/artifacts
+end_time: 1729086973733
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 36816714caf4470c98805c4b5cd55f7b
+run_name: amazing-goat-917
+run_uuid: 36816714caf4470c98805c4b5cd55f7b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729086830694
+status: 4
+tags: []
+user_id: cash

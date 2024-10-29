@@ -1,0 +1,38 @@
+{% extends 'stroke_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="display-4 text-center fw-bold" style="color: #2663a4;">Resultados de la Predicción de Riesgo de Ictus</h2>
+    
+    <h3 class="mt-4 mb-4 text-center text-secondary">Gráficos Generados:</h3>
+    {% if plots %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="font-weight-bold text-center" style="color: #2663a4;">Pacientes con Alto Riesgo de Ictus por Edad</h5>
+                <img class="img-fluid" src="data:image/png;base64,{{ plots.age_stroke_plot }}" alt="Distribución de Stroke por Edad">
+            </div>
+            <div class="col-md-6">
+                <h5 class="font-weight-bold text-center" style="color: #2663a4;">Total de Registros y Casos de Ictus</h5>
+                <img class="img-fluid" src="data:image/png;base64,{{ plots.stroke_percentage_plot }}" alt="Total de Registros y Casos de Ictus">
+            </div>
+            <div class="col-md-6 mt-4">
+                <h5 class="font-weight-bold text-center" style="color: #2663a4;">Pacientes con Alto Riesgo de Ictus por Nivel de Glucosa</h5>
+                <img class="img-fluid" src="data:image/png;base64,{{ plots.glucose_stroke_plot }}" alt="Distribución de Stroke por Nivel de Glucosa">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5 class="font-weight-bold text-center" style="color: #2663a4;">Pacientes con Alto Riesgo de Ictus y Hipertensión</h5>
+                <img class="img-fluid" src="data:image/png;base64,{{ plots.hypertension_stroke_plot }}" alt="Distribución de Stroke por Hipertensión">
+            </div>
+            <div class="col-md-6">
+                <h5 class="font-weight-bold text-center" style="color: #2663a4;">Pacientes con Alto Riesgo de Ictus y Enfermedad Cardíaca</h5>
+                <img class="img-fluid" src="data:image/png;base64,{{ plots.heart_disease_stroke_plot }}" alt="Distribución de Stroke por Enfermedad Cardíaca">
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <p class="text-center mt-4">No se generaron gráficos.</p>
+    {% endif %}
+{% endblock %}

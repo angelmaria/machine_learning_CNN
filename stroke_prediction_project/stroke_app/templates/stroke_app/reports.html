@@ -1,0 +1,190 @@
+{% extends "stroke_app/base.html" %}
+
+{% block content %}
+
+<div class="container py-2">
+    <h1 class="display-4 mb-3 fw-bolder text-center" style="color: #2663a4;">Stroke Prediction Model Report</h1>
+    
+    <!-- Model Metrics -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header text-white" style="background: #2663a4;">
+            <h2 class="h4 mb-0">Model Performance Metrics</h2>
+        </div>
+        <div class="card-body">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-muted">Accuracy</h5>
+                            <p class="display-6 mb-0 text-secondary fw-bold">{{ metrics.accuracy|floatformat:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-muted">Precision</h5>
+                            <p class="display-6 mb-0 text-secondary fw-bold">{{ metrics.precision|floatformat:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-muted">Recall</h5>
+                            <p class="display-6 mb-0 text-secondary fw-bold">{{ metrics.recall|floatformat:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-muted">F1 Score</h5>
+                            <p class="display-6 mb-0 text-secondary fw-bold">{{ metrics.f1|floatformat:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-muted">AUC-ROC</h5>
+                            <p class="display-6 mb-0 text-secondary fw-bold">{{ metrics.auc|floatformat:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Confusion Matrix -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header text-white" style="background: #2663a4;">
+                    <h2 class="h4 mb-0">Confusion Matrix</h2>
+                </div>
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <img src="data:image/png;base64,{{ confusion_matrix }}" alt="Confusion Matrix" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feature Importance -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header text-white" style="background: #2663a4;">
+                    <h2 class="h4 mb-0">Feature Importance</h2>
+                </div>
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <img src="data:image/png;base64,{{ feature_importance }}" alt="Feature Importance" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feature Importance -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header text-white" style="background: #2663a4;">
+            <h2 class="h4 mb-0">Feature Importance</h2>
+        </div>
+        <div class="card-body">
+            
+            <div class="mt-4">
+                <h3 class="h5 mb-3">Top Features Ranking</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" style="color: #2663a4;">Feature</th>
+                                <th scope="col" style="color: #2663a4;">Importance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for feature in top_features %}
+                            <tr>
+                                <td>{{ feature.feature }}</td>
+                                <td>{{ feature.importance|floatformat:4 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="container mt-5">
+    <h1 class="mb-4">Model Performance Report</h1>
+    <h2>Performance Metrics</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Accuracy</td>
+                <td>{{ accuracy }}</td>
+            </tr>
+            <tr>
+                <td>Precision</td>
+                <td>{{ precision }}</td>
+            </tr>
+            <tr>
+                <td>Recall</td>
+                <td>{{ recall }}</td>
+            </tr>
+            <tr>
+                <td>F1 Score</td>
+                <td>{{ f1_score }}</td>
+            </tr>
+            <tr>
+                <td>AUC-ROC</td>
+                <td>{{ auc_roc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Feature Importance Analysis -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title">Feature Importance Analysis</h4>
+            <ul class="list-group">
+                {% for feature, importance in feature_importance.items %}
+                    <li class="list-group-item">{{ feature }}: {{ importance|floatformat:2 }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Confusion Matrix -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title">Confusion Matrix</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Predicted 0</th>
+                            <th>Predicted 1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Actual 0</th>
+                            <td>{{ confusion_matrix.0.0 }}</td>
+                            <td>{{ confusion_matrix.0.1 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Actual 1</th>
+                            <td>{{ confusion_matrix.1.0 }}</td>
+                            <td>{{ confusion_matrix.1.1 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div> {% endcomment %}
+{% endblock %}

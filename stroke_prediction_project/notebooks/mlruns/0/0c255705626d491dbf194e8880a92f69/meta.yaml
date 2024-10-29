@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/0c255705626d491dbf194e8880a92f69/artifacts
+end_time: 1729085819637
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0c255705626d491dbf194e8880a92f69
+run_name: kindly-crane-748
+run_uuid: 0c255705626d491dbf194e8880a92f69
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729085819012
+status: 3
+tags: []
+user_id: cash

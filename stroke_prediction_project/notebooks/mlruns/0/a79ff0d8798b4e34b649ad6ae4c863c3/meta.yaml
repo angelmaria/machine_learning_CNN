@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/a79ff0d8798b4e34b649ad6ae4c863c3/artifacts
+end_time: 1729085884967
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a79ff0d8798b4e34b649ad6ae4c863c3
+run_name: honorable-pig-623
+run_uuid: a79ff0d8798b4e34b649ad6ae4c863c3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729085884329
+status: 3
+tags: []
+user_id: cash

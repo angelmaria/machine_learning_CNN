@@ -1,0 +1,33 @@
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}             # Crea la base de datos con el nombre especificado
+      MYSQL_USER: ${DB_USER}                  # Usa el nuevo nombre de usuario
+      MYSQL_PASSWORD: ${DB_PASSWORD} 
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}     # Contraseña para el usuario root
+    ports:
+      - "3306:3306"                           # Exponer el puerto 3306
+    volumes:
+      - db_data:/var/lib/mysql                # Persistir datos
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000  # Comando para iniciar el servidor Django
+    volumes:
+      - .:/app                                 # Montar el directorio actual
+    ports:
+      - "8000:8000"                           # Exponer el puerto 8000
+    depends_on:
+      - db                                     # Asegurarse de que db esté disponible
+    environment:
+      DB_NAME: ${DB_NAME}                     # Nombre de la base de datos
+      DB_USER: ${DB_USER}                     # Usa el nuevo nombre de usuario
+      DB_PASSWORD: ${DB_PASSWORD}              # Contraseña del usuario
+      DB_HOST: db                              # Nombre del servicio (db)
+      DB_PORT: ${DB_PORT}                     # Puerto de la base de datos
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}  # Clave secreta de Django
+
+volumes:
+  db_data:                                    # Volumen para persistir datos

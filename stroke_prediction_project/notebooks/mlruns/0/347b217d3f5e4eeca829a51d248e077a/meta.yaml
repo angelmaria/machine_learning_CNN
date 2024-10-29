@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/347b217d3f5e4eeca829a51d248e077a/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 347b217d3f5e4eeca829a51d248e077a
+run_name: legendary-hound-420
+run_uuid: 347b217d3f5e4eeca829a51d248e077a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729079723498
+status: 1
+tags: []
+user_id: cash

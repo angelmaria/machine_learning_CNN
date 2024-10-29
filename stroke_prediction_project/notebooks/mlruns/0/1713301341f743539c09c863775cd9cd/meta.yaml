@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/1713301341f743539c09c863775cd9cd/artifacts
+end_time: 1729086067486
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1713301341f743539c09c863775cd9cd
+run_name: masked-grouse-986
+run_uuid: 1713301341f743539c09c863775cd9cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729085832271
+status: 4
+tags: []
+user_id: cash

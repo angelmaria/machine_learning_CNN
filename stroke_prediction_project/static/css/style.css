@@ -1,0 +1,143 @@
+/* body {
+    background-color: #f8f9fa;
+} */
+
+ body {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1.titulo {
+    color:#4b86c6 !important;
+}
+
+/* Navbar Styling */
+ul.navbar-nav {
+    font-weight: bold;
+ }
+.navbar {
+    background-color: #2663a4;
+    /* box-shadow: 0 4px 6px rgb(255, 255, 255); */
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.5rem;
+}
+a.logo:hover 
+{
+    color: #ffc107 !important;
+}
+.navbar-brand img {
+    width: 40px;
+    margin-right: 10px;
+}
+.nav-link {
+    color: #fff;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffc107;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+/* Resaltar el link de la barra de navegación activo */
+.navbar {
+    position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
+}
+
+.nav-item {
+    position: relative; /* Para que el pseudo-elemento se posicione correctamente */
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    width: 78%; /* Ancho de la línea igual al de la nav-link */
+    height: 3px; /* Altura de la línea */
+    background-color: white; /* Color de la línea */
+    bottom: -12px; /* Distancia de la línea respecto al texto */
+    left: 0;
+    transition: transform 0.3s ease; /* Transición suave */
+    transform: scaleX(1); /* Asegura que la línea esté visible */
+}
+
+/* Estilos para el video */
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.vid-container {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Ajusta la altura según tu preferencia */
+    overflow: hidden;
+}
+
+.video-cover video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Nuevos estilos para el texto sobre el video */
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff; /* Blanco para el texto */
+    text-align: center;
+    /* padding: 20px; */
+    background: rgba(0, 0, 0, 0.5); 
+    /* Fondo negro semi-transparente */
+    border-radius: 5px; /* Bordes redondeados opcional */
+    width: 20%; /* estaba a 70% en musica armonia */
+    box-sizing: border-box; /* Para incluir el padding en el ancho total */
+}
+
+.text-muted {
+    color: #ffffff; /* Blanco para el texto */
+    font-size: 2rem; /* Tamaño del texto, ajusta según tu preferencia */
+    margin: 0; /* Elimina el margen si es necesario */
+}
+
+/* Estilo del link "login" de la barra de navegación */
+.btn-login {
+    background-color: white;
+    color: #2663a4;
+    display: flex;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn-login:hover {
+    background-color: #1d4f7d; /* Un color más oscuro para el efecto hover */
+    color: white;
+}
+
+/* Doy border blanco al menú hamburgesa para disposivitos móviles y pantallas < 768px */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block !important; /* Asegúrate de que el botón esté siempre visible */
+        border: 2px solid white !important;
+        background-color: rgba(255, 255, 255, 0.625);
+    }
+    .navbar-collapse.show {
+        display: block !important; /* Muestra el menú al abrirlo */
+    }
+    .nav-link.active::after {
+        width:30%;
+        bottom: -3px;
+    }
+}

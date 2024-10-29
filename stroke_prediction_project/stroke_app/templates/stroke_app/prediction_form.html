@@ -1,0 +1,196 @@
+{% extends 'stroke_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="post" action="{% url 'predict_stroke' %}" class="row g-3">
+    {% csrf_token %}
+    
+    <!-- Primera columna -->
+    <div class="col-md-6">
+        <div class="mb-3 p-3 bg-light border rounded">
+            <h5 class="text-secondary fs-3">Patient Information</h5>
+            <div class="mb-3">
+                <label for="age" class="form-label fw-bold mb-0">Age</label>
+                <div class="d-flex flex-column">
+                    <output id="age_output" class="text-center mb-1 text-secondary fs-5">50</output>
+                    <input type="range" id="age" name="age" min="0" max="100" value="50" class="form-range">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="avg_glucose_level" class="form-label fw-bold mb-0">Avg Glucose Level</label>
+                <div class="d-flex flex-column">
+                    <output id="glucose_output" class="text-center mb-1 text-secondary fs-5">150</output>
+                    <input type="range" id="avg_glucose_level" name="avg_glucose_level" min="50" max="300" value="150" class="form-range">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="bmi" class="form-label fw-bold mb-0">BMI</label>
+                <div class="d-flex flex-column">
+                    <output id="bmi_output" class="text-center mb-1 text-secondary fs-5">30</output>
+                    <input type="range" id="bmi" name="bmi" min="10" max="50" value="30" class="form-range">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.hypertension.id_for_label }}" class="form-label fw-bold">Hypertension</label>
+                {{ form.hypertension }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.heart_disease.id_for_label }}" class="form-label fw-bold">Heart Disease</label>
+                {{ form.heart_disease }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Segunda columna -->
+    <div class="col-md-6">
+        <div class="mb-3 p-3 bg-light border rounded">
+            <h5 class="text-secondary fs-3">Lifestyle Information</h5>
+            <div class="mb-4">
+                <label for="{{ form.gender.id_for_label }}" class="form-label fw-bold">Gender</label>
+                {{ form.gender }}
+            </div>
+
+            <div class="mb-4">
+                <label for="{{ form.ever_married.id_for_label }}" class="form-label fw-bold">Ever Married</label>
+                {{ form.ever_married }}
+            </div>
+
+            <div class="mb-4">
+                <label for="{{ form.work_type.id_for_label }}" class="form-label fw-bold">Work Type</label>
+                {{ form.work_type }}
+            </div>
+
+            <div class="mb-4">
+                <label for="{{ form.Residence_type.id_for_label }}" class="form-label fw-bold">Residence Type</label>
+                {{ form.Residence_type }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.smoking_status.id_for_label }}" class="form-label fw-bold">Smoking Status</label>
+                {{ form.smoking_status }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-0 text-center">
+        <button type="submit" class="btn btn-primary px-5 fw-bolder">Predict</button>
+    </div>
+</form>
+  
+<!-- Modal mejorado -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="resultModalLabel">
+                    <i class="bi bi-heart-pulse"></i> Stroke Risk Prediction
+                </h5>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 class="text-secondary">Stroke Risk: 
+                    <span class="fw-bold {% if risk == 'High' %}text-danger{% else %}text-success{% endif %}">
+                        {{ risk }}
+                    </span>
+                </h4>
+                <p class="fs-5 text-secondary">Probability: <span class="fw-bold">{{ probability }}</span></p>
+                
+                <!-- Barra de progreso para la probabilidad -->
+                <div class="progress my-4" style="height: 30px;">
+                    <div class="progress-bar {% if risk == 'High' %}bg-danger{% else %}bg-success{% endif %}" role="progressbar" 
+                        style="width: {{ probability }};" aria-valuenow="{{ probability }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ probability }}
+                    </div>
+                </div>
+
+                <!-- Ícono visual de alerta -->
+                {% if risk == 'High' %}
+                    <div class="alert alert-danger fs-5 d-flex align-items-center" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill fs-4 me-2"></i>
+                        High Risk! Consider consulting your doctor.
+                    </div>
+                {% else %}
+                    <div class="alert alert-success fs-5 d-flex align-items-center" role="alert">
+                        <i class="bi bi-check-circle-fill fs-4 me-2"></i>
+                        Low Risk. Keep maintaining a healthy lifestyle!
+                    </div>
+                {% endif %}
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de recomendaciones -->
+<div id="recommendations" class="recommendations mt-4" style="display: none; opacity: 0; transition: opacity 0.5s;">
+    {% if risk == 'High' %}
+    <div class="alert alert-danger">
+        <h4>Recommendations:</h4>
+        
+            <ul>
+                <li>Follow a balanced diet rich in fruits and vegetables.</li>
+                <li>Consult your doctor for a detailed assessment.</li>
+                <li>Engage in regular physical activity.</li>
+                <li>Manage stress through relaxation techniques.</li>
+                <li>Stay hydrated and limit salt intake.</li>
+            </ul>
+        {% else %}
+        <div class="alert alert-info">
+            <h4>Recommendations:</h4>
+            <ul>
+                <li>Continue to maintain a healthy diet.</li>
+                <li>Stay active with regular exercise.</li>
+                <li>Keep monitoring your health indicators.</li>
+                <li>Manage stress through hobbies and relaxation.</li>
+                <li>Consider regular check-ups with your doctor.</li>
+            </ul>
+        
+    </div>
+    {% endif %}
+</div>
+  
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configuración de los sliders
+        function setupSlider(sliderId, outputId) {
+            const slider = document.getElementById(sliderId);
+            const output = document.getElementById(outputId);
+
+            if (slider && output) {
+                output.innerText = slider.value;
+                slider.addEventListener('input', function() {
+                    output.innerText = this.value;
+                });
+            }
+        }
+
+        // Inicializar sliders
+        setupSlider('age', 'age_output');
+        setupSlider('avg_glucose_level', 'glucose_output');
+        setupSlider('bmi', 'bmi_output');
+
+        // Mostrar el modal si hay resultados
+        const resultModalElement = document.getElementById('resultModal');
+        if (resultModalElement && {{ show_result|yesno:"true,false" }}) {
+            const resultModal = new bootstrap.Modal(resultModalElement);
+            resultModal.show();
+        }
+
+        // Mostrar recomendaciones al cerrar el modal
+        resultModalElement.addEventListener('hidden.bs.modal', function () {
+            const recommendations = document.getElementById('recommendations');
+            recommendations.style.display = 'block'; // Mostrar la sección
+            setTimeout(() => {
+                recommendations.style.opacity = '1'; // Hacerla visible
+            }, 10); // Tiempo para asegurar que el estilo se aplique
+        });
+
+    });
+</script>
+{% endblock %}

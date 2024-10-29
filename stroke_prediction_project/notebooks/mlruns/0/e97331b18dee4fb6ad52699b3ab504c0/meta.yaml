@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/e97331b18dee4fb6ad52699b3ab504c0/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e97331b18dee4fb6ad52699b3ab504c0
+run_name: unruly-croc-60
+run_uuid: e97331b18dee4fb6ad52699b3ab504c0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729244234537
+status: 1
+tags: []
+user_id: cash

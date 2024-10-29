@@ -1,0 +1,16 @@
+# Ignorar archivos de caché y temporales
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar directorios de control de versiones
+.git/
+node_modules/
+
+# Ignorar archivos de entorno virtual
+venv/
+.env
+
+# Ignorar logs
+*.log

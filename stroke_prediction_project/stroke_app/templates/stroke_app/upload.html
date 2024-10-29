@@ -1,0 +1,19 @@
+{% extends 'stroke_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="text-center mt-4 fw-bold mb-0" style="color: #2663a4;">Bulk Upload a File</h2>
+<div class="row text-center">
+    <div class="col-md-12">
+        <form method="post" action="/upload/" enctype="multipart/form-data" class="text-center mt-4">
+            {% csrf_token %}
+            <label for="file" class="form-label fw-bold">Select a file:</label>
+            <input type="file" name="file" accept=".csv" required class="form-control mb-3">
+            <button type="submit" class="btn text-light fw-bold" style="background-color:#3e78b6;">Upload CSV</button>
+        </form>
+    </div>
+</div>
+{% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+{% endblock %}
